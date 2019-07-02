@@ -1,5 +1,9 @@
 #!/bin/bash
 
+GLOVE_DIR="glove.6B"
+mkdir -p $GLOVE_DIR
+cd $GLOVE_DIR
+
 # Get GloVe vectors
 if hash wget 2>/dev/null; then
   wget http://downloads.cs.stanford.edu/nlp/data/glove.6B.zip
