@@ -2,7 +2,6 @@ import sys
 import os
 import matplotlib.pyplot as plt
 import pandas as pd
-from operator import itemgetter
 
 DEFAULT_DIR = "sentiment-analysis-on-movie-reviews"
 RESULT_DIR = "results/"
@@ -13,13 +12,13 @@ if not os.path.isdir(RESULT_DIR):
     os.mkdir(RESULT_DIR)
 
 def drawInsights():
-    trainDF = pd.read_csv(DEFAULT_DIR + '/train.tsv', sep='\t', index_col='PhraseId')
+    trainDF = pd.read_csv(DEFAULT_DIR + '/train.tsv', sep = '\t', index_col = 'PhraseId')
     trainDF['WordCount'] = [len(x.split()) for x in trainDF['Phrase'].tolist()]
     
     sentimentFrequency = trainDF['Sentiment'].value_counts()
     fig, ax = plt.subplots()
     plt.title('Sentiment Frequency')
-    ax.pie(sentimentFrequency, labels = [sentimentLabels[x] for x in sentimentFrequency.index], autopct='%1.1f%%')
+    ax.pie(sentimentFrequency, labels = [sentimentLabels[x] for x in sentimentFrequency.index], autopct = '%1.1f%%')
     fig.savefig(RESULT_DIR + 'sentimentFrequency.png')
 
     wordFrequency = trainDF['WordCount'].value_counts()
