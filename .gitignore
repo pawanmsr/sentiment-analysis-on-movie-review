@@ -2,4 +2,6 @@
 *.pyc
 .DS_Store
 *.log
-sentiment-analysis-on-movie-reviews
+sentiment-analysis-on-movie-reviews/
+models/
+results/
