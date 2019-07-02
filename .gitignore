@@ -5,3 +5,5 @@
 sentiment-analysis-on-movie-reviews/
 models/
 results/
+glove.6B/
+*.zip
