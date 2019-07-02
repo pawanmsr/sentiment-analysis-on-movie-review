@@ -1,5 +1,8 @@
 import numpy as np
 
+# GloVe vectors obtained from stanford.edu
+# word vector loader form stanford nlp course
+
 DEFAULT_FILE_PATH = "glove.6B/glove.6B.50d.txt"
 
 def loadWordVectors(tokens, filepath=DEFAULT_FILE_PATH, dimensions=50):
