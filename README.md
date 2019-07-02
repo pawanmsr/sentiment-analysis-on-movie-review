@@ -1,5 +1,5 @@
-Sentiment Analysis on Movie Review
-==================================
+Sentiment Analysis on Movie Reviews
+===================================
 
 Practice Competition on Kaggle  
 [Competition Website](https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews)
