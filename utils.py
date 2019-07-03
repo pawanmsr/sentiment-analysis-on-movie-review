@@ -3,6 +3,7 @@ import os
 import re
 import sys
 import pickle
+import json
 import pandas as pd
 
 from nltk.tokenize import word_tokenize
@@ -20,6 +21,13 @@ if not os.path.isdir(MODEL_DIR):
     os.mkdir(MODEL_DIR)
 
 sentiment_labels = {0 : 'negative', 1 : 'somewhat negative', 2 : 'neutral', 3 : 'somewhat positive', 4 : 'positive'}
+
+def json_save(obj, filename):
+    try:
+        with open(MODEL_DIR + filename, 'w') as f:
+            json.dump(obj, f)
+    except Exception as e:
+        print('an exception occured while saving {}:'.format(e))
 
 def pickle_save(obj, filename):
     try:
