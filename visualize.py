@@ -18,3 +18,15 @@ def word_frequency_chart(df):
     wordFrequency = df['WordCount'].value_counts()
     ax.bar(wordFrequency.index, wordFrequency)
     return fig
+
+def training_evolution_graph(history):
+    fig, ax = plt.subplots()
+    ax.plot(range(1, len(history.history['loss']) + 1),
+        history.history['loss'], 'r--', label = 'Training Loss')
+    ax.plot(range(1, len(history.history['val_loss'])+1),
+        history.history['val_loss'], 'b-', label = 'Validation Loss')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.legend(2)
+    plt.title('Loss Evolution')
+    return fig
