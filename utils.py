@@ -2,6 +2,7 @@
 import os
 import re
 import sys
+import pickle
 import pandas as pd
 
 from nltk.tokenize import word_tokenize
@@ -20,6 +21,22 @@ if not os.path.isdir(MODEL_DIR):
 
 sentiment_labels = {0 : 'negative', 1 : 'somewhat negative', 2 : 'neutral', 3 : 'somewhat positive', 4 : 'positive'}
 
+def pickle_save(obj, filename):
+    try:
+        with open(filename, 'wb') as f:
+            pickle.dump(obj, f, protocol = pickle.HIGHEST_PROTOCOL)
+    except Exception as e:
+        print('unable to save {} file due to {}'.format(filename, e))
+
+def pickle_load(filename):
+    obj = None
+    try:
+        with open(filename, 'rb') as f:
+            obj = pickle.load(f)
+    except Exception as e:
+        print('uable to load {} file due to {}'.format(filename, e))
+    return obj
+
 def preprocess_dataframe(filename):
     df = pd.read_csv(DATA_DIR + filename, sep = '\t', index_col = 'PhraseId')
     df['Phrase'] = df['Phrase'].str.lower()
@@ -34,12 +51,20 @@ def preprocess_dataframe(filename):
 
     lemmatizer = WordNetLemmatizer()
     
+    lpl = 0
     reviews = []
+    word_set = set()
     for phrase in df['Phrase']:
         words = word_tokenize(phrase)
+        lpl = max(lpl, len(words))
         lemma_words = [lemmatizer.lemmatize(word) for word in words]
+        word_set.update(lemma_words)
         reviews.append(lemma_words)
-    
+    print('==========\n{}\n----------'.format(filename))
+    print('total reviews:', len(reviews))
+    print('word set size:', len(word_set))
+    print('longest phrase length: {}\n'.format(lpl))
+
     if 'Sentiment' in df.columns:
         fig = visualize.sentiment_frequency_chart(df, sentiment_labels)
         fig.savefig(RESULT_DIR + 'sentiment-frequency-' + savename + '.png')
