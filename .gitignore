@@ -7,3 +7,5 @@ models/
 results/
 glove.6B/
 *.zip
+__pycache__
+clean.sh
