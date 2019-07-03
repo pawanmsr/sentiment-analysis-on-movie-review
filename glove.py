@@ -8,7 +8,7 @@ DEFAULT_FILE_PATH = "glove.6B/glove.6B.50d.txt"
 
 def loadWordVectors(tokens, filepath=DEFAULT_FILE_PATH, dimensions=50):
     """Read pretrained GloVe vectors"""
-    wordVectors = np.zeros((len(tokens), dimensions))
+    wordVectors = np.zeros((len(tokens) + 1, dimensions))
     with open(filepath) as ifs:
         for line in ifs:
             line = line.strip()
