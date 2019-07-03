@@ -43,7 +43,7 @@ def train(model_type = 'DenseNN'):
     pickle_save(tokenize, MODEL_DIR + 'tokenizer.pickle')
 
     X = pad_sequences(tokenize.texts_to_sequences(reviews), SEQUENCE_LENGTH)
-    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size = 0.001, train_size = 0.001, stratify = y)
+    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size = 0.2, stratify = y)
     
     json_save(tokenize.word_index, 'word_index.json')
     word_vectors = loadWordVectors(tokenize.word_index)
