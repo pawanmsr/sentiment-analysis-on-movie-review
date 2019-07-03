@@ -1,7 +1,7 @@
 import numpy as np
 
 # GloVe vectors obtained from stanford.edu
-# CS224N: NLP with Deep Learning offered at Stanford
+# Checkout CS224N: NLP with Deep Learning offered at Stanford
 # http://web.stanford.edu/class/cs224n/
 
 DEFAULT_FILE_PATH = "glove.6B/glove.6B.50d.txt"
