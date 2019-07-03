@@ -22,6 +22,11 @@ if not os.path.isdir(MODEL_DIR):
 
 sentiment_labels = {0 : 'negative', 1 : 'somewhat negative', 2 : 'neutral', 3 : 'somewhat positive', 4 : 'positive'}
 
+def submit(pred, model_type):
+    df = pd.read_csv(DATA_DIR + 'sampleSubmission.csv', sep = ',')
+    df.Sentiment = pred
+    df.to_csv(RESULT_DIR + model_type + '_submission.csv', index = False)
+
 def json_save(obj, filename):
     try:
         with open(MODEL_DIR + filename, 'w') as f:
@@ -39,7 +44,7 @@ def pickle_save(obj, filename):
 def pickle_load(filename):
     obj = None
     try:
-        with open(filename, 'rb') as f:
+        with open(MODEL_DIR + filename, 'rb') as f:
             obj = pickle.load(f)
     except Exception as e:
         print('uable to load {} file due to {}'.format(filename, e))
