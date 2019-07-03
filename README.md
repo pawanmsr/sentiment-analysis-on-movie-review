@@ -7,14 +7,22 @@ Practice Competition on Kaggle
 Task
 ----
 
-Classify the sentiment of sentences from the Rotten Tomatoes dataset  
-Visit competition website for dataset
+Classify the sentiment of sentences from the Rotten Tomatoes dataset
 
 Requirements
 ------------
 
-- gensim
-- *TODO*
+- nltk
+- numpy
+- matplotlib
+- keras
+- scikit-learn
+- pandas
+
+If [*conda*](https://www.anaconda.com/) is installed, run *requirements.sh* script and supply python3 environment name.
+```
+bash requirements.sh
+```
 
 Method
 ------
