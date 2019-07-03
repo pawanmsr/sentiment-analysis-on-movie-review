@@ -4,7 +4,8 @@ from keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
 
-from utils import preprocess_dataframe, pickle_save, pickle_load
+from utils import preprocess_dataframe
+from utils import json_save, pickle_save, pickle_load
 from glove import loadWordVectors
 from models import build_cnn, build_dense_nn, build_lstm
 from visualize import training_evolution_graph
@@ -33,6 +34,7 @@ def train(model_type = 'DenseNN'):
     X = pad_sequences(tokenize.texts_to_sequences(reviews), SEQUENCE_LENGTH)
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size = 0.2, stratify = y)
     
+    json_save(tokenize.word_index, 'word_index.json')
     word_vectors = loadWordVectors(tokenize.word_index)
     
     if model_type == 'LSTM':
@@ -51,9 +53,9 @@ def train(model_type = 'DenseNN'):
     early_stopping = EarlyStopping(min_delta = 0.001, mode = 'max',
         monitor = 'val_acc', patience = 2)
     history = model.fit(X_train, y_train, validation_data = (X_val, y_val),
-        batch_size = 64, epochs = 10, callbacks = [early_stopping])
+        batch_size = 128, epochs = 10, callbacks = [early_stopping])
     fig = training_evolution_graph(history)
-    fig.savefig(model_type + 'training_evolution.png')
+    fig.savefig(RESULT_DIR + model_type + '_training_evolution.png')
     model.save(MODEL_DIR + model_type + '.h5')
 
 if __name__ == "__main__":
