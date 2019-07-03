@@ -22,11 +22,11 @@ def word_frequency_chart(df):
 def training_evolution_graph(history):
     fig, ax = plt.subplots()
     ax.plot(range(1, len(history.history['loss']) + 1),
-        history.history['loss'], 'r--', label = 'Training Loss')
+        history.history['loss'], 'r--')
     ax.plot(range(1, len(history.history['val_loss'])+1),
-        history.history['val_loss'], 'b-', label = 'Validation Loss')
+        history.history['val_loss'], 'b-')
     plt.xlabel('Epoch')
     plt.ylabel('Loss')
-    plt.legend(2)
-    plt.title('Loss Evolution')
+    plt.legend(['Training Loss', 'Validation Loss'])
+    plt.title('Training Evolution')
     return fig
