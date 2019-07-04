@@ -3,7 +3,7 @@ Sentiment Analysis on Movie Reviews
 
 Practice Competition on Kaggle  
 [Competition Website](https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews)  
-Although this is an individual practice work, I have put it on GitHub to allow for flexibility in changing device and sharing.
+Individual Practice Work
 
 Task
 ----
