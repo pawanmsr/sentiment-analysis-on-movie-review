@@ -70,7 +70,7 @@ def train(model_type = 'DenseNN'):
     fig = training_evolution_graph(history)
     fig.savefig(RESULT_DIR + model_type + '_training_evolution.png')
     model.save(MODEL_DIR + model_type + '.h5')
-    plot_model(model, to_file=RESULT_DIR + model_type + 'model.png')
+    plot_model(model, to_file = RESULT_DIR + model_type + '_architecture.png')
     print('training complete')
 
 def test(model_type = 'DenseNN'):
@@ -80,7 +80,6 @@ def test(model_type = 'DenseNN'):
     
     print('testing . . . ')
     model = load_model(MODEL_DIR + model_type + '.h5')
-    plot_model(model, to_file = RESULT_DIR + model_type + '_architecture.png')
     pred = model.predict_classes(X)
     print('testing complete')
     submit(pred, model_type)
