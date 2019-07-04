@@ -3,19 +3,18 @@
 set -e
 
 FILE=glove.6B/glove.6B.50d.txt
+exists=false
 if test -f "$FILE"
 then
-    exists=$true
+    exists=true
     read -p "50d GloVe exists. Redownload? [y/n]: " ans
     if [ $ans == 'y' ] || [ $ans == 'Y' ]
     then
-        exists=$false
+        exists=false
     fi
-else
-    exists=$false
 fi
 
-if ! $exists
+if [[ "$exists" == false ]]
 then
     bash get-glove.sh
 fi
