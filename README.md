@@ -18,6 +18,7 @@ Requirements
 - keras
 - scikit-learn
 - pandas
+- graphviz
 
 If [*conda*](https://www.anaconda.com/) is installed, run *requirements.sh* script and supply python3 environment name.
 ```
