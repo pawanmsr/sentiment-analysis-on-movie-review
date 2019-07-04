@@ -48,7 +48,7 @@ Instructions
 [Competition Website](https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews) and extract it inside the cloned repository
 4. Run [sentiment.py](sentiment.py)
 ```python
-python sentiment.py --train/--test [MODEL TYPE]
+python sentiment.py ARGUMENTS
 ```
 Enter `python sentiment.py -h` for help
 
