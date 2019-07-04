@@ -20,7 +20,7 @@ Source
 ### Python
 * [glove.py](glove.py) loads glove vectors (found it on standford.edu and adapted it for my needs)
 * [models.py](model.py) contains model definitions
-* [visualize.py](visualize.py) plots visualization
+* [visualize.py](visualize.py) plots visualizations
 * [utils.py](utils.py) stores utility functions
 * [sentiment.py](sentiment.py) is the main program
 
@@ -34,6 +34,7 @@ Requirements
 - scikit-learn
 - pandas
 - graphviz
+- pydot
 
 If [*conda*](https://www.anaconda.com/) is installed, run *requirements.sh* script and supply python3 environment name.
 ```
