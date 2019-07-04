@@ -7,13 +7,15 @@ def build_dense_nn(word_vectors, train_embeddings = False, sequence_length = 60,
         input_length = sequence_length,
         weights = [word_vectors], trainable = train_embeddings))
     model.add(Flatten())
-    model.add(Dense((word_vectors.shape[1] + num_classes)/4, activation = 'relu'))
+    model.add(Dense(512, activation = 'relu'))
+    model.add(Dense(64, activation = 'relu'))
     model.add(Dense(num_classes, activation = 'softmax'))
     model.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
     print(model.summary())
     return model
 
-def build_cnn():
+def build_cnn(word_vectors, train_embeddings = False, sequence_length = 60, num_classes = 5):
+    # TODO: build CNN based model
     pass
 
 def build_lstm(word_vectors, train_embeddings = False, sequence_length = 60, num_classes = 5):
